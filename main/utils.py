@@ -16,11 +16,12 @@ def auto_ip(ip):
     #                           location=f"{result.get('lat')}, {result.get('lon')}", postal=result.get('zip'))
     # except Exception as e:
     #     print(e)
+    # return result.items
 
-    if result.get('status') == 'success':
+    if result.get('status') == 'success' and response.status_code == 200:
         IpInfo.objects.create(ip=ip, city=result.get('city'), country=result.get('country'),
                               location=f"{result.get('lat')}, {result.get('lon')}", postal=result.get('zip'))
+        return result
     else:
-        return redirect('error')
-
-    return result.items
+        # return redirect('error/')
+        return ('NOT FOUND IP')

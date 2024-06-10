@@ -5,5 +5,5 @@ from main.views import main_views, error_views
 
 urlpatterns = [
     path('', main_views, name='main'),
-    path('', error_views, name='error')
+    path('error/', error_views, name='error')
 ]
